@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.primary_color }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.heading_font.system? and settings.body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    {{ content_for_header }}
+
+    {%- liquid
+      assign heading_font = settings.heading_font
+      assign body_font = settings.body_font
+      assign base_font_size = settings.base_font_size | append: 'px'
+    -%}
+
+    <style>
+      :root {
+        --color-primary: {{ settings.primary_color }};
+        --color-secondary: {{ settings.secondary_color }};
+        --color-accent: {{ settings.accent_color }};
+        --color-text: {{ settings.text_color }};
+        --color-background: {{ settings.background_color }};
+        --font-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+        --font-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+        --font-size-base: {{ base_font_size }};
+        --logo-width: {{ settings.logo_width | default: 200 }}px;
+      }
+      
+      {{ heading_font | font_face: font_display: 'swap' }}
+      {{ body_font | font_face: font_display: 'swap' }}
+
+      /* Critical Kit Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--color-text);
+        background-color: var(--color-background);
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+        color: var(--color-primary);
+        font-weight: 700;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Magical effects base styles */
+      .magical-glow {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .magical-glow:hover {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+      }
+
+      /* Skip to content for accessibility */
+      .skip-to-content-link {
+        background: var(--color-primary);
+        color: white;
+        font-weight: bold;
+        left: 50%;
+        padding: 8px 16px;
+        position: absolute;
+        text-decoration: none;
+        top: 10px;
+        transform: translateY(-100%);
+        transition: transform 0.3s;
+        z-index: 9999;
+      }
+
+      .skip-to-content-link:focus {
+        transform: translateY(0%);
+      }
+
+      /* Loading animation */
+      .loading {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      /* Critical Kit brand colors and effects */
+      .text-primary { color: var(--color-primary); }
+      .text-secondary { color: var(--color-secondary); }
+      .text-accent { color: var(--color-accent); }
+      .bg-primary { background-color: var(--color-primary); }
+      .bg-secondary { background-color: var(--color-secondary); }
+      .bg-accent { background-color: var(--color-accent); }
+    </style>
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    {%- if settings.enable_magical_effects -%}
+      <script>
+        document.documentElement.classList.add('magical-effects-enabled');
+      </script>
+    {%- endif -%}
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  </head>
+
+  <body class="gradient{% if customer %} customer-logged-in{% endif %}">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- sections 'header-group' -%}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {%- sections 'footer-group' -%}
+
+    <!-- AJAX Cart Drawer -->
+    {%- if settings.cart_type == 'drawer' -%}
+      {% render 'cart-drawer' %}
+    {%- endif -%}
+
+    <!-- Wishlist Modal -->
+    {%- if settings.enable_wishlist -%}
+      {% render 'wishlist-modal' %}
+    {%- endif -%}
+
+    <!-- Search Modal -->
+    {%- if settings.enable_predictive_search -%}
+      {% render 'search-modal' %}
+    {%- endif -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      };
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`
+      };
+
+      window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`
+      };
+    </script>
+
+    {%- if settings.enable_magical_effects -%}
+      {{ 'magical-effects.js' | asset_url | script_tag }}
+    {%- endif -%}
+
+    {%- if settings.ajax_cart_enable -%}
+      {{ 'ajax-cart.js' | asset_url | script_tag }}
+    {%- endif -%}
+
+    {%- if settings.enable_wishlist -%}
+      {{ 'wishlist.js' | asset_url | script_tag }}
+    {%- endif -%}
+
+    {%- if settings.enable_predictive_search -%}
+      {{ 'search.js' | asset_url | script_tag }}
+    {%- endif -%}
+  </body>
+</html>

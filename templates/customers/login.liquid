@@ -1,0 +1,719 @@
+<!-- Customer Login Template -->
+<div class="customer-login">
+  <div class="container">
+    <div class="customer-layout">
+      
+      <!-- Login Section -->
+      <div class="login-section">
+        <div class="form-container">
+          <div class="form-header">
+            <h1 class="form-title">Welcome Back, Adventurer</h1>
+            <p class="form-subtitle">Sign in to your Critical Kit account</p>
+          </div>
+
+          {% form 'customer_login', class: 'login-form', novalidate: 'novalidate' %}
+            
+            {% if form.errors %}
+              <div class="form-errors" role="alert">
+                <h3 class="errors-heading">Please correct the following:</h3>
+                <ul class="errors-list">
+                  {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <div class="form-group">
+              <label for="customer-email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                name="customer[email]" 
+                id="customer-email"
+                class="form-input {% if form.errors contains 'email' %}error{% endif %}"
+                value="{{ form.email }}"
+                autocomplete="email"
+                required
+                aria-describedby="email-error"
+              >
+              {% if form.errors contains 'email' %}
+                <div id="email-error" class="field-error">{{ form.errors.messages.email }}</div>
+              {% endif %}
+            </div>
+
+            <div class="form-group">
+              <label for="customer-password" class="form-label">Password</label>
+              <div class="password-field">
+                <input 
+                  type="password" 
+                  name="customer[password]" 
+                  id="customer-password"
+                  class="form-input {% if form.errors contains 'password' %}error{% endif %}"
+                  autocomplete="current-password"
+                  required
+                  aria-describedby="password-error"
+                >
+                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                  <svg class="password-show" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <svg class="password-hide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+              {% if form.errors contains 'password' %}
+                <div id="password-error" class="field-error">{{ form.errors.messages.password }}</div>
+              {% endif %}
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-full magical-glow">
+                Sign In
+              </button>
+            </div>
+
+            <div class="form-footer">
+              <a href="#recover" class="forgot-password-link" id="recover-password-link">
+                Forgot your password?
+              </a>
+            </div>
+
+          {% endform %}
+        </div>
+      </div>
+
+      <!-- Register Section -->
+      <div class="register-section">
+        <div class="form-container">
+          <div class="form-header">
+            <h2 class="form-title">Join the Guild</h2>
+            <p class="form-subtitle">Create your Critical Kit account</p>
+          </div>
+
+          {% form 'create_customer', class: 'register-form', novalidate: 'novalidate' %}
+            
+            {% if form.posted_successfully? %}
+              <div class="form-success" role="alert">
+                <h3>Welcome to the guild!</h3>
+                <p>We've sent you an email with a link to activate your account.</p>
+              </div>
+            {% endif %}
+
+            {% if form.errors %}
+              <div class="form-errors" role="alert">
+                <h3 class="errors-heading">Please correct the following:</h3>
+                <ul class="errors-list">
+                  {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="register-first-name" class="form-label">First Name</label>
+                <input 
+                  type="text" 
+                  name="customer[first_name]" 
+                  id="register-first-name"
+                  class="form-input {% if form.errors contains 'first_name' %}error{% endif %}"
+                  value="{{ form.first_name }}"
+                  autocomplete="given-name"
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="register-last-name" class="form-label">Last Name</label>
+                <input 
+                  type="text" 
+                  name="customer[last_name]" 
+                  id="register-last-name"
+                  class="form-input {% if form.errors contains 'last_name' %}error{% endif %}"
+                  value="{{ form.last_name }}"
+                  autocomplete="family-name"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="register-email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                name="customer[email]" 
+                id="register-email"
+                class="form-input {% if form.errors contains 'email' %}error{% endif %}"
+                value="{{ form.email }}"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="register-password" class="form-label">Password</label>
+              <div class="password-field">
+                <input 
+                  type="password" 
+                  name="customer[password]" 
+                  id="register-password"
+                  class="form-input {% if form.errors contains 'password' %}error{% endif %}"
+                  autocomplete="new-password"
+                  required
+                  minlength="6"
+                >
+                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                  <svg class="password-show" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <svg class="password-hide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="password-strength" id="password-strength"></div>
+              <div class="password-requirements">
+                <small>Password must be at least 6 characters long</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="customer[accepts_marketing]" value="1" class="checkbox-input">
+                <span class="checkbox-mark"></span>
+                <span class="checkbox-text">I want to receive news and exclusive offers</span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-full magical-glow">
+                Create Account
+              </button>
+            </div>
+
+          {% endform %}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Password Recovery Modal -->
+    <div class="password-recovery-modal" id="password-recovery-modal" role="dialog" aria-labelledby="recovery-title" aria-modal="true" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="recovery-title">Reset Your Password</h3>
+          <button class="modal-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        
+        {% form 'recover_customer_password', class: 'recovery-form' %}
+          {% if form.posted_successfully? %}
+            <div class="form-success">
+              <p>We've sent you an email with a link to reset your password.</p>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="form-errors">
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="recover-email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              name="email" 
+              id="recover-email"
+              class="form-input"
+              placeholder="Enter your email address"
+              required
+              autocomplete="email"
+            >
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Reset Link</button>
+            <button type="button" class="btn btn-secondary modal-cancel">Cancel</button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* Customer Login Styles */
+.customer-login {
+  min-height: calc(100vh - 200px);
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.customer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Form Containers */
+.form-container {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid #e2e8f0;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all var(--transition);
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+}
+
+.form-input.error {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+/* Password Field */
+.password-field {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: color var(--transition);
+}
+
+.password-toggle:hover {
+  color: var(--color-primary);
+}
+
+.password-strength {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.password-requirements {
+  margin-top: 0.25rem;
+}
+
+.password-requirements small {
+  color: var(--color-secondary);
+  font-size: 0.75rem;
+}
+
+/* Checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkbox-mark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 4px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.checkbox-input:checked + .checkbox-mark {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-input:checked + .checkbox-mark::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.checkbox-text {
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 2rem;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.forgot-password-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.forgot-password-link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Form Messages */
+.form-errors,
+.form-success {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+}
+
+.form-errors {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.form-success {
+  background: #f0fff4;
+  border: 1px solid #9ae6b4;
+  color: #047857;
+}
+
+.errors-heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.errors-list {
+  font-size: 0.875rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.field-error {
+  color: #e53e3e;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Password Recovery Modal */
+.password-recovery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition);
+}
+
+.password-recovery-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: var(--color-secondary);
+  transition: color var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--color-primary);
+}
+
+.recovery-form .form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.recovery-form .btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .customer-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .recovery-form .form-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-login {
+    padding: 2rem 0;
+  }
+  
+  .form-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Focus management */
+.form-input:focus,
+.checkbox-input:focus + .checkbox-mark,
+.password-toggle:focus,
+.forgot-password-link:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .form-container {
+    border-width: 2px;
+  }
+  
+  .form-input {
+    border-width: 2px;
+  }
+}
+</style>
+
+<script>
+// Customer login functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Password toggle functionality
+  const passwordToggles = document.querySelectorAll('.password-toggle');
+  
+  passwordToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const input = this.parentNode.querySelector('input');
+      const showIcon = this.querySelector('.password-show');
+      const hideIcon = this.querySelector('.password-hide');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        showIcon.style.display = 'none';
+        hideIcon.style.display = 'block';
+        this.setAttribute('aria-label', 'Hide password');
+      } else {
+        input.type = 'password';
+        showIcon.style.display = 'block';
+        hideIcon.style.display = 'none';
+        this.setAttribute('aria-label', 'Show password');
+      }
+    });
+  });
+  
+  // Password strength indicator
+  const passwordInput = document.getElementById('register-password');
+  const strengthIndicator = document.getElementById('password-strength');
+  
+  if (passwordInput && strengthIndicator) {
+    passwordInput.addEventListener('input', function() {
+      const password = this.value;
+      const strength = checkPasswordStrength(password);
+      
+      strengthIndicator.textContent = strength.text;
+      strengthIndicator.className = `password-strength ${strength.class}`;
+    });
+  }
+  
+  function checkPasswordStrength(password) {
+    if (password.length === 0) {
+      return { text: '', class: '' };
+    } else if (password.length < 6) {
+      return { text: 'Too short', class: 'weak' };
+    } else if (password.length < 8) {
+      return { text: 'Fair', class: 'fair' };
+    } else if (password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
+      return { text: 'Strong', class: 'strong' };
+    } else {
+      return { text: 'Good', class: 'good' };
+    }
+  }
+  
+  // Password recovery modal
+  const recoverLink = document.getElementById('recover-password-link');
+  const modal = document.getElementById('password-recovery-modal');
+  const modalClose = modal?.querySelector('.modal-close');
+  const modalCancel = modal?.querySelector('.modal-cancel');
+  
+  if (recoverLink && modal) {
+    recoverLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('active'), 10);
+      
+      // Focus first input
+      const firstInput = modal.querySelector('input');
+      if (firstInput) firstInput.focus();
+    });
+    
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => modal.style.display = 'none', 300);
+      recoverLink.focus();
+    }
+    
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modalCancel) {
+      modalCancel.addEventListener('click', closeModal);
+    }
+    
+    // Close on escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+    
+    // Close on background click
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
+});
+</script>

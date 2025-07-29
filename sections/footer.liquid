@@ -1,0 +1,574 @@
+<!-- Footer Section -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    
+    <!-- Main Footer Content -->
+    <div class="footer__main">
+      <div class="footer__grid">
+        
+        <!-- Company Info -->
+        <div class="footer__column footer__column--about">
+          <div class="footer__logo">
+            {% if settings.logo %}
+              <img 
+                src="{{ settings.logo | image_url: width: 150 }}" 
+                alt="{{ shop.name }}"
+                class="footer__logo-img"
+              >
+            {% else %}
+              <div class="footer__logo-text">
+                <span class="logo-main">Critical Kit</span>
+                <span class="logo-tagline">D&D & RPG Store</span>
+              </div>
+            {% endif %}
+          </div>
+          
+          <p class="footer__description">
+            Your ultimate destination for D&D adventures and RPG treasures. Equip your party with the finest gear for legendary quests.
+          </p>
+          
+          <!-- Social Media Links -->
+          <div class="footer__social">
+            <h4 class="footer__social-title">Join the Guild</h4>
+            <div class="social-links">
+              {% if settings.social_facebook_link != blank %}
+                <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" class="social-link social-link--facebook" aria-label="Facebook">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+              {% endif %}
+              
+              {% if settings.social_twitter_link != blank %}
+                <a href="{{ settings.social_twitter_link }}" target="_blank" rel="noopener" class="social-link social-link--twitter" aria-label="Twitter">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                  </svg>
+                </a>
+              {% endif %}
+              
+              {% if settings.social_instagram_link != blank %}
+                <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" class="social-link social-link--instagram" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.281C3.853 14.977 3.29 13.76 3.29 12.394c0-1.297.49-2.448 1.281-3.323.791-.875 1.78-1.31 2.967-1.31 1.297 0 2.448.49 3.323 1.281.875.791 1.31 1.78 1.31 2.967 0 1.297-.49 2.448-1.281 3.323-.791.875-1.78 1.31-2.967 1.31z"/>
+                  </svg>
+                </a>
+              {% endif %}
+              
+              {% if settings.social_youtube_link != blank %}
+                <a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener" class="social-link social-link--youtube" aria-label="YouTube">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+              {% endif %}
+              
+              {% if settings.social_discord_link != blank %}
+                <a href="{{ settings.social_discord_link }}" target="_blank" rel="noopener" class="social-link social-link--discord" aria-label="Discord">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z"/>
+                  </svg>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer__column">
+          <h4 class="footer__column-title">Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="/" class="footer__link">Home</a></li>
+            <li><a href="/collections/all" class="footer__link">All Products</a></li>
+            <li><a href="/pages/our-story" class="footer__link">Our Story</a></li>
+            <li><a href="/pages/contact" class="footer__link">Contact Us</a></li>
+            {% if blog.articles.size > 0 %}
+              <li><a href="{{ blog.url }}" class="footer__link">Guild News</a></li>
+            {% endif %}
+            <li><a href="/pages/shipping-returns" class="footer__link">Shipping & Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Collections -->
+        <div class="footer__column">
+          <h4 class="footer__column-title">Collections</h4>
+          <ul class="footer__links">
+            <li><a href="/collections/dm-tools-and-resources" class="footer__link">DM Tools & Resources</a></li>
+            <li><a href="/collections/dice-and-dice-accessories" class="footer__link">Dice & Accessories</a></li>
+            <li><a href="/collections/player-provisions" class="footer__link">Player Provisions</a></li>
+            <li><a href="/collections/adventurers-accessories" class="footer__link">Adventurer's Accessories</a></li>
+            <li><a href="/collections/the-artisans-forge" class="footer__link">The Artisan's Forge</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="footer__column">
+          <h4 class="footer__column-title">Customer Service</h4>
+          <ul class="footer__links">
+            {% if customer %}
+              <li><a href="/account" class="footer__link">My Account</a></li>
+              <li><a href="/account/logout" class="footer__link">Logout</a></li>
+            {% else %}
+              <li><a href="/account/login" class="footer__link">Login</a></li>
+              <li><a href="/account/register" class="footer__link">Create Account</a></li>
+            {% endif %}
+            <li><a href="/pages/faq" class="footer__link">FAQ</a></li>
+            <li><a href="/pages/size-guide" class="footer__link">Size Guide</a></li>
+            <li><a href="/pages/privacy-policy" class="footer__link">Privacy Policy</a></li>
+            <li><a href="/pages/terms-of-service" class="footer__link">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="footer__column footer__column--newsletter">
+          <h4 class="footer__column-title">Join the Adventure</h4>
+          <p class="footer__newsletter-description">
+            Get the latest news, exclusive offers, and D&D tips delivered to your inbox!
+          </p>
+          
+          {% form 'customer', class: 'footer__newsletter-form' %}
+            {% if form.posted_successfully? %}
+              <div class="footer__newsletter-success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                Thanks for subscribing!
+              </div>
+            {% endif %}
+            
+            <div class="footer__newsletter-form-group">
+              <input 
+                type="email" 
+                name="contact[email]" 
+                id="footer-newsletter-email" 
+                placeholder="Enter your email"
+                class="footer__newsletter-input"
+                required
+                aria-label="Email address for newsletter"
+              >
+              <button type="submit" class="footer__newsletter-btn btn btn-accent">
+                <span class="btn-text">Subscribe</span>
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                </svg>
+              </button>
+            </div>
+            
+            {% if form.errors %}
+              <div class="footer__newsletter-errors">
+                {% for error in form.errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer__bottom">
+      <div class="footer__bottom-content">
+        
+        <!-- Copyright -->
+        <div class="footer__copyright">
+          <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="footer__payment">
+          <span class="footer__payment-label">We Accept:</span>
+          <div class="payment-icons">
+            <svg class="payment-icon" viewBox="0 0 38 24" role="img" aria-labelledby="pi-visa">
+              <title id="pi-visa">Visa</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/>
+              <path d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c0 .1-.1.2-.2.2H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z" fill="#142688"/>
+            </svg>
+            
+            <svg class="payment-icon" viewBox="0 0 38 24" role="img" aria-labelledby="pi-master">
+              <title id="pi-master">Mastercard</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/>
+              <circle fill="#EB001B" cx="15" cy="12" r="7"/>
+              <circle fill="#F79E1B" cx="23" cy="12" r="7"/>
+              <path fill="#FF5F00" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.2-3 3.3-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"/>
+            </svg>
+            
+            <svg class="payment-icon" viewBox="0 0 38 24" role="img" aria-labelledby="pi-paypal">
+              <title id="pi-paypal">PayPal</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/>
+              <path fill="#003087" d="M23.9 8.3c.2-1 0-1.7-.6-2.3-.6-.7-1.7-1-3.1-1h-4.1c-.3 0-.5.2-.6.5L14 15.6c0 .2.1.4.3.4H17l.4-3.4 1.8-2.2 4.7-2.1z"/>
+              <path fill="#3086C8" d="M23.9 8.3l-.2.2c-.5 2.8-2.2 3.8-4.6 3.8H18c-.3 0-.5.2-.6.5l-.6 3.9-.2 1c0 .2.1.4.3.4H19c.3 0 .5-.2.5-.4v-.1l.4-2.4v-.1c0-.2.3-.4.5-.4h.3c2.1 0 3.7-.8 4.1-3.2.2-1 .1-1.8-.4-2.4-.1-.5-.3-.7-.5-.8z"/>
+              <path fill="#012169" d="M23.3 8.1c-.1-.1-.2-.1-.3-.1-.1 0-.2 0-.3 0-.3 0-.7 0-1.1 0h-3c-.1 0-.2 0-.2.1-.2.1-.3.2-.3.4l-.7 4.4v.1c0-.3.3-.5.6-.5h1.3c2.5 0 4.1-1 4.6-3.8v-.2c-.1-.1-.3-.2-.5-.4"/>
+            </svg>
+            
+            <svg class="payment-icon" viewBox="0 0 38 24" role="img" aria-labelledby="pi-american_express">
+              <title id="pi-american_express">American Express</title>
+              <path fill="#000" opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/>
+              <path fill="#006FCF" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/>
+              <path fill="#FFF" d="M8.971 10.268l1.174-4.114h1.949l1.175 4.114 1.916-4.114h2.171l-1.916 4.114 1.916 4.114h-2.171l-1.916-4.114-1.175 4.114H8.971l-1.175-4.114-1.916 4.114H3.709l1.916-4.114L3.709 6.154h2.171l1.916 4.114 1.175-4.114zm16.389 2.971c-.145 1.232-.229 1.853-.229 1.853h-1.887c0-.484.154-1.461.229-1.853h1.887zm-2.156-5.085h2.297l1.175 8.228h-2.092l-.154-.969h-2.446l-.154.969h-2.092l1.175-8.228-.709 8.228h-2.092l1.175-8.228h2.092z"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0f1419 100%);
+  color: white;
+  margin-top: auto;
+}
+
+.footer__main {
+  padding: 4rem 0 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.footer__column--about {
+  grid-column: span 2;
+}
+
+.footer__column--newsletter {
+  grid-column: span 1;
+}
+
+/* Logo */
+.footer__logo {
+  margin-bottom: 1.5rem;
+}
+
+.footer__logo-img {
+  max-width: 150px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer__logo-text {
+  color: white;
+}
+
+.footer__logo-text .logo-main {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+.footer__logo-text .logo-tagline {
+  display: block;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.footer__description {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Social Media */
+.footer__social-title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.social-link:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.social-link--facebook:hover { background: #1877f2; color: white; }
+.social-link--twitter:hover { background: #1da1f2; color: white; }
+.social-link--instagram:hover { background: #e4405f; color: white; }
+.social-link--youtube:hover { background: #ff0000; color: white; }
+.social-link--discord:hover { background: #5865f2; color: white; }
+
+/* Column Titles */
+.footer__column-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+  position: relative;
+}
+
+.footer__column-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* Links */
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer__link {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: all var(--transition);
+  display: inline-block;
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+  transform: translateX(5px);
+  text-decoration: none;
+}
+
+/* Newsletter */
+.footer__newsletter-description {
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.footer__newsletter-form-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer__newsletter-input {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: var(--border-radius);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.footer__newsletter-input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.footer__newsletter-input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.footer__newsletter-btn {
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.footer__newsletter-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(56, 161, 105, 0.2);
+  border: 1px solid rgba(56, 161, 105, 0.4);
+  border-radius: var(--border-radius);
+  color: #68d391;
+  font-size: 0.875rem;
+}
+
+.footer__newsletter-errors {
+  color: #fecaca;
+  font-size: 0.875rem;
+}
+
+/* Footer Bottom */
+.footer__bottom {
+  padding: 1.5rem 0;
+}
+
+.footer__bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__copyright {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.875rem;
+}
+
+.footer__payment {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer__payment-label {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.payment-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.payment-icon {
+  width: 40px;
+  height: 24px;
+  background: white;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer__column--about {
+    grid-column: span 3;
+  }
+  
+  .footer__column--newsletter {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__main {
+    padding: 3rem 0 1.5rem;
+  }
+  
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer__column--about,
+  .footer__column--newsletter {
+    grid-column: span 2;
+  }
+  
+  .footer__newsletter-form-group {
+    flex-direction: column;
+  }
+  
+  .footer__newsletter-btn {
+    align-self: flex-start;
+  }
+  
+  .footer__bottom-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .footer__column--about,
+  .footer__column--newsletter {
+    grid-column: span 1;
+  }
+  
+  .payment-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .footer__logo-img {
+    filter: brightness(0) invert(1);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .footer {
+    border-top: 2px solid;
+  }
+  
+  .footer__link:hover {
+    outline: 2px solid;
+  }
+}
+
+/* Accessibility improvements */
+.footer__link:focus,
+.social-link:focus,
+.footer__newsletter-btn:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer__link,
+  .social-link {
+    transition: none;
+  }
+  
+  .footer__link:hover,
+  .social-link:hover {
+    transform: none;
+  }
+}
+</style>
