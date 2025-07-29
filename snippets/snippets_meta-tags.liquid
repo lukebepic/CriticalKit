@@ -1,0 +1,14 @@
+{%- comment -%}
+  This snippet outputs meta tags for SEO and social sharing.
+  Customize as needed for your store.
+{%- endcomment -%}
+<title>{{ page_title }}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+<meta name="description" content="{{ page_description | default: shop.description }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description | default: shop.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:site_name" content="{{ shop.name }}">
+{%- if settings.share_image != blank -%}
+  <meta property="og:image" content="{{ settings.share_image | img_url: '1200x630' }}">
+{%- endif -%}
