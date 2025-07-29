@@ -1,0 +1,216 @@
+<!-- Our Story Page Template -->
+<div class="page page--our-story">
+  <div class="container">
+    
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="page-header__content">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.content != blank %}
+          <div class="page-content">
+            {{ page.content }}
+          </div>
+        {% else %}
+          <!-- Default content if page content is empty -->
+          <div class="page-content">
+            <div class="story-hero">
+              <h2>Welcome to Critical Kit</h2>
+              <p class="story-lead">Your ultimate destination for D&D adventures and RPG treasures. We're passionate gamers who understand what it takes to create legendary campaigns and unforgettable moments around the table.</p>
+            </div>
+
+            <div class="story-sections">
+              <section class="story-section">
+                <div class="story-section__icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 9.95 5.16-.21 9-4.4 9-9.95V7l-10-5z"/>
+                  </svg>
+                </div>
+                <div class="story-section__content">
+                  <h3>Our Mission</h3>
+                  <p>To equip adventurers with the finest tools, accessories, and treasures needed for epic quests. Whether you're a seasoned Dungeon Master or a new player rolling your first character, we're here to enhance your tabletop experience.</p>
+                </div>
+              </section>
+
+              <section class="story-section">
+                <div class="story-section__icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="story-section__content">
+                  <h3>Quality & Craftsmanship</h3>
+                  <p>Every item in our collection is carefully selected for its quality, durability, and ability to enhance your gaming experience. From precision-crafted dice to beautifully detailed miniatures, we believe your tools should be as legendary as your adventures.</p>
+                </div>
+              </section>
+
+              <section class="story-section">
+                <div class="story-section__icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <div class="story-section__content">
+                  <h3>Community First</h3>
+                  <p>We're more than just a store – we're part of the gaming community. We understand the joy of rolling a natural 20, the excitement of discovering new treasures, and the bonds formed around the gaming table. Your adventure is our adventure.</p>
+                </div>
+              </section>
+            </div>
+
+            <div class="story-cta">
+              <h3>Ready to Begin Your Quest?</h3>
+              <p>Explore our collections and discover the perfect gear for your next adventure.</p>
+              <a href="/collections/all" class="btn btn-primary magical-glow">Start Shopping</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </header>
+
+  </div>
+</div>
+
+<style>
+/* Our Story Page Styles */
+.page--our-story {
+  padding: 3rem 0;
+  min-height: calc(100vh - 200px);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.page-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.story-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(26, 54, 93, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+  border-radius: var(--border-radius);
+}
+
+.story-hero h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.story-lead {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.story-sections {
+  margin-bottom: 4rem;
+}
+
+.story-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition);
+}
+
+.story-section:hover {
+  transform: translateY(-5px);
+}
+
+.story-section__icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.story-section__content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.story-section__content p {
+  color: var(--color-text);
+  margin: 0;
+}
+
+.story-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, rgba(26, 54, 93, 0.9) 100%);
+  color: white;
+  border-radius: var(--border-radius);
+}
+
+.story-cta h3 {
+  color: var(--color-accent);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.story-cta p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .story-hero h2 {
+    font-size: 1.5rem;
+  }
+  
+  .story-lead {
+    font-size: 1rem;
+  }
+  
+  .story-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .story-section__icon {
+    align-self: center;
+  }
+  
+  .story-cta {
+    padding: 2rem 1rem;
+  }
+  
+  .story-cta h3 {
+    font-size: 1.5rem;
+  }
+}
+</style>
