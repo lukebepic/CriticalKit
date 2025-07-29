@@ -1,0 +1,34 @@
+{
+  "name": "criticalkit-shopify-theme",
+  "version": "1.0.0",
+  "description": "Dungeons and Dragons and RPG themed online store Shopify theme",
+  "main": "index.js",
+  "scripts": {
+    "dev": "shopify theme dev",
+    "push": "shopify theme push",
+    "pull": "shopify theme pull",
+    "check": "shopify theme check",
+    "serve": "shopify theme serve",
+    "deploy": "shopify theme push --live"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukebepic/CriticalKit.git"
+  },
+  "keywords": [
+    "shopify",
+    "theme",
+    "dungeons-and-dragons",
+    "rpg",
+    "ecommerce"
+  ],
+  "author": "lukebepic",
+  "license": "MIT",
+  "devDependencies": {
+    "@shopify/cli": "^3.50.0",
+    "@shopify/theme": "^3.50.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

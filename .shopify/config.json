@@ -1,0 +1,10 @@
+{
+  "development": {
+    "theme": "CriticalKit Development",
+    "store": "your-store-name.myshopify.com"
+  },
+  "production": {
+    "theme": "CriticalKit Live",
+    "store": "your-store-name.myshopify.com"
+  }
+}
